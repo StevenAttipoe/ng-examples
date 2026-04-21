@@ -28,25 +28,28 @@ npm install
 Skills provide the agent with specialized knowledge. We'll add the `angular-developer` and `gemini-sdk` skills to help with code generation and API integration.
 ```bash
 # Add Angular expertise
-gemini skills install https://github.com/google-gemini/angular-developer --scope project
+npx skills install https://github.com/angular/skills/ --skill angular-developer
 
 # Add Gemini SDK expertise
-gemini skills install https://github.com/google-gemini/gemini-sdk --scope project
+npx skills add https://github.com/google-gemini/gemini-skills --skill gemini-api-dev
+npx skills add https://github.com/google-gemini/gemini-skills --skill gemini-interactions-api
 ```
 
 ### 3. Configure MCP Servers
 The Model Context Protocol (MCP) allows your AI tools to interact with your running application and the browser.
 
 #### Angular MCP Server
-This server allows the AI to understand your Angular project structure, components, and services.
+This server allows the AI to understand your Angular project structure, components, and services. Use the Angular CLI to get the configuration for the MCP server.
+
 ```bash
-gemini mcp add angular npx -y @modelcontextprotocol/server-angular --scope project
+ng mcp
 ```
+Take the configuration and add it to `settings.json` in the `.gemini` folder in the root of the project.
 
 #### Chrome DevTools MCP Server
 This allows the AI to inspect the running application in your browser for debugging and UI analysis.
 ```bash
-gemini mcp add chromedevtools npx -y @modelcontextprotocol/server-chromedevtools --scope project
+gemini mcp add chrome-devtools npx chrome-devtools-mcp@latest
 ```
 
 ---
