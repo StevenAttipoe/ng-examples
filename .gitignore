@@ -70,3 +70,6 @@ node_modules/
 .dataconnect
 
 .DS_Store
+
+# dist
+*/dist
